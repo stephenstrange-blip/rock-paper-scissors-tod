@@ -1,4 +1,18 @@
 
+//helper functions
+function tie(){
+    console.log("Its a Tie!");
+}
+function lose(human,computer){
+    console.log(`You lose! ${computer} beats ${human}.`);
+}
+function win(human, computer){
+    console.log(`You win! ${human} beats ${computer}.`);
+}
+function showScore(human, computer) {
+    console.log(`You: ${human} , Computer: ${computer}.`);
+}
+
 /*  if random_num is less than 5, choose rock
     if random_num is greater than 5, choose paper,
     If neither, choose Scissors*/
@@ -19,10 +33,12 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    
+    //user should put valid responses, otherwise the loop 
+    //continues indefinitely
     while(true) {
         let user_input = prompt("Enter Rock, Paper, Scissors");
-
+        
+        // trim beginning and end whitespaces
         if (user_input.toLowerCase().trim() === "rock") {
             return "Rock";
         }
@@ -59,6 +75,7 @@ function playRound(humanChoice, computerChoice, humanScore, computerScore) {
         if (computerChoice === "Rock"){
             humanScore++;
             computerScore++;
+            //display messages are called
             tie();
             showScore(humanScore, computerScore);
         }
@@ -131,15 +148,3 @@ function playGame(){
 
 playGame();
 
-function tie(){
-    console.log("Its a Tie!");
-}
-function lose(human,computer){
-    console.log(`You lose! ${computer} beats ${human}.`);
-}
-function win(human, computer){
-    console.log(`You win! ${human} beats ${computer}.`);
-}
-function showScore(human, computer) {
-    console.log(`You: ${human} , Computer: ${computer}.`);
-}
