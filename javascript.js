@@ -81,6 +81,7 @@ function playRound(humanChoice, computerChoice, humanScore, computerScore) {
         }
         else if (computerChoice === "Paper") {
             computerScore++;
+            //helper function is called based on human perspective
             lose(humanChoice, computerChoice);
             showScore(humanScore, computerScore);
         }
