@@ -132,38 +132,31 @@ function playRound(humanChoice, humanScore, computerScore) {
     return [humanScore, computerScore];
 }
 
+let humanScore = 0;
+let computerScore = 0
+
 const btns = document.querySelectorAll("button");
+// const span = document.querySelector("span");
+
 btns.forEach( function (btn) {
     btn.addEventListener("click", () => {
-        playGame(btn.textContent);
+        // call every round on every click
+        const result = playRound(btn.textContent, humanScore, computerScore);
+        // update score every click
+        humanScore = result[0];
+        computerScore = result[1];
+        // game ends when either reaches a score of 5
+        if ((humanScore === 5) || (computerScore === 5)) {
+            console.log("Game ends");
+            // reset the score
+            humanScore = 0;
+            computerScore = 0;
+            return;
+        }
     });
+
 }
 );
 
 
-// const btns = document.querySelectorAll("button");
-
-/* You can iterate over the NodeList and log the text content or class
-btns.forEach(function(btn) {
-    console.log(btn.textContent); // Logs "Rock", "Paper", "Scissors"
-    console.log(btn.className);    // Logs "Rock", "Paper", "Scissors"
-});*/
-
-
-
-function playGame(humanChoice){
-    let humanScore = 0;
-    let computerScore = 0;
-    for (let i = 1; i <= 5; i++) {
-        let result = playRound(humanChoice, humanScore, computerScore)
-        humanScore = result[0];
-        computerScore = result[1];
-        console.log(humanScore, computerScore);
-    }
-}
-
-
-
-
-// playGame();
 
