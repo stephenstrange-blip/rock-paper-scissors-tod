@@ -70,9 +70,9 @@ function getHumanChoice() {
         if computer play scissors, plus 1 to both
 */
 
-function playRound(humanScore, computerScore) {
+function playRound(humanChoice, humanScore, computerScore) {
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
+    // let humanChoice = getHumanChoice();
     if (humanChoice === "Rock") {
         if (computerChoice === "Rock"){
             humanScore++;
@@ -132,16 +132,30 @@ function playRound(humanScore, computerScore) {
     return [humanScore, computerScore];
 }
 
-const btnRock = document.querySelector(".Rock");
-const btnPaper = document.querySelector(".Paper");
-const btnScissors = document.querySelector(".Scissors");
+const btns = document.querySelectorAll("button");
+btns.forEach( function (btn) {
+    btn.addEventListener("click", () => {
+        playGame(btn.textContent);
+    });
+}
+);
 
 
-function playGame(){
+// const btns = document.querySelectorAll("button");
+
+/* You can iterate over the NodeList and log the text content or class
+btns.forEach(function(btn) {
+    console.log(btn.textContent); // Logs "Rock", "Paper", "Scissors"
+    console.log(btn.className);    // Logs "Rock", "Paper", "Scissors"
+});*/
+
+
+
+function playGame(humanChoice){
     let humanScore = 0;
     let computerScore = 0;
     for (let i = 1; i <= 5; i++) {
-        let result = playRound( humanScore, computerScore)
+        let result = playRound(humanChoice, humanScore, computerScore)
         humanScore = result[0];
         computerScore = result[1];
         console.log(humanScore, computerScore);
@@ -151,5 +165,5 @@ function playGame(){
 
 
 
-playGame();
+// playGame();
 
