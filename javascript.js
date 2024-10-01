@@ -1,16 +1,16 @@
 
 //helper functions
 function tie(){
-    console.log("Its a Tie!");
+    return "Its a Tie!";
 }
 function lose(human,computer){
-    console.log(`You lose! ${computer} beats ${human}.`);
+    return `You lose! ${computer} beats ${human}.`
 }
 function win(human, computer){
-    console.log(`You win! ${human} beats ${computer}.`);
+    return `You win! ${human} beats ${computer}.`
 }
 function showScore(human, computer) {
-    console.log(`You: ${human} , Computer: ${computer}.`);
+    return `You: ${human} , Computer: ${computer}.`
 }
 
 /*  if random_num is less than 5, choose rock
@@ -71,6 +71,7 @@ function getHumanChoice() {
 */
 
 function playRound(humanChoice, humanScore, computerScore) {
+    // const span = document.querySelector("span");
     let computerChoice = getComputerChoice();
     // let humanChoice = getHumanChoice();
     if (humanChoice === "Rock") {
@@ -78,55 +79,46 @@ function playRound(humanChoice, humanScore, computerScore) {
             humanScore++;
             computerScore++;
             //display messages are called
-            tie();
-            showScore(humanScore, computerScore);
+            span.textContent = tie() + "</br>;" + showScore(humanScore, computerScore);
         }
         else if (computerChoice === "Paper") {
             computerScore++;
             //helper function is called based on human perspective
-            lose(humanChoice, computerChoice);
-            showScore(humanScore, computerScore);
+            span.textContent = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else {
             humanScore++;
-            win(humanChoice, computerChoice);
-            showScore(humanScore, computerScore);
+            span.textContent = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
     }
     if (humanChoice === "Paper") {
         if (computerChoice === "Rock"){
             humanScore++;
-            win(humanChoice, computerChoice);
-            showScore(humanScore, computerScore);
+            span.textContent = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else if (computerChoice === "Paper") {
             computerScore++;
             humanScore++;
-            tie();
-            showScore(humanScore, computerScore);
+            span.textContent = tie() + "</br>" + showScore(humanScore, computerScore);
         }
         else {
             computerScore++;
-            lose(humanChoice, computerChoice);
-            showScore(humanScore, computerScore);
+            span.textContent = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
     }
     if (humanChoice === "Scissors") {
         if (computerChoice === "Rock"){
             computerScore++;
-            lose(humanChoice, computerChoice);
-            showScore(humanScore, computerScore);
+            span.textContent = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else if (computerChoice === "Paper") {
             humanScore++;
-            win(humanChoice, computerChoice);
-            showScore(humanScore, computerScore);
+            span.textContent = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else {
             humanScore++;
             computerScore++;
-            tie();
-            showScore(humanScore, computerScore);
+            span.textContent = `${tie()} </br> ${showScore(humanScore, computerScore)}`;
         }
     }
     return [humanScore, computerScore];
@@ -136,7 +128,7 @@ let humanScore = 0;
 let computerScore = 0
 
 const btns = document.querySelectorAll("button");
-// const span = document.querySelector("span");
+const span = document.querySelector("span");
 
 btns.forEach( function (btn) {
     btn.addEventListener("click", () => {
@@ -147,7 +139,7 @@ btns.forEach( function (btn) {
         computerScore = result[1];
         // game ends when either reaches a score of 5
         if ((humanScore === 5) || (computerScore === 5)) {
-            console.log("Game ends");
+            span.textContent = "Game ends";
             // reset the score
             humanScore = 0;
             computerScore = 0;
