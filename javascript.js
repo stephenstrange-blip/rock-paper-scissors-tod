@@ -70,7 +70,9 @@ function getHumanChoice() {
         if computer play scissors, plus 1 to both
 */
 
-function playRound(humanChoice, computerChoice, humanScore, computerScore) {
+function playRound(humanScore, computerScore) {
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
     if (humanChoice === "Rock") {
         if (computerChoice === "Rock"){
             humanScore++;
@@ -130,22 +132,24 @@ function playRound(humanChoice, computerChoice, humanScore, computerScore) {
     return [humanScore, computerScore];
 }
 
+const btnRock = document.querySelector(".Rock");
+const btnPaper = document.querySelector(".Paper");
+const btnScissors = document.querySelector(".Scissors");
 
 
-/*  inside playGame()
-        declare score
-        call function 5 times
-        display score
-*/
 function playGame(){
     let humanScore = 0;
     let computerScore = 0;
     for (let i = 1; i <= 5; i++) {
-        let result = playRound(getHumanChoice(), getComputerChoice(), humanScore, computerScore)
+        let result = playRound( humanScore, computerScore)
         humanScore = result[0];
         computerScore = result[1];
+        console.log(humanScore, computerScore);
     }
 }
+
+
+
 
 playGame();
 
