@@ -79,46 +79,46 @@ function playRound(humanChoice, humanScore, computerScore) {
             humanScore++;
             computerScore++;
             //display messages are called
-            span.textContent = tie() + "</br>;" + showScore(humanScore, computerScore);
+            span.innerHTML = tie() + "</br>;" + showScore(humanScore, computerScore);
         }
         else if (computerChoice === "Paper") {
             computerScore++;
             //helper function is called based on human perspective
-            span.textContent = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else {
             humanScore++;
-            span.textContent = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
     }
     if (humanChoice === "Paper") {
         if (computerChoice === "Rock"){
             humanScore++;
-            span.textContent = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else if (computerChoice === "Paper") {
             computerScore++;
             humanScore++;
-            span.textContent = tie() + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML = tie() + "</br>" + showScore(humanScore, computerScore);
         }
         else {
             computerScore++;
-            span.textContent = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML= lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
     }
     if (humanChoice === "Scissors") {
         if (computerChoice === "Rock"){
             computerScore++;
-            span.textContent = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML = lose(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else if (computerChoice === "Paper") {
             humanScore++;
-            span.textContent = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
+            span.innerHTML = win(humanChoice, computerChoice) + "</br>" + showScore(humanScore, computerScore);
         }
         else {
             humanScore++;
             computerScore++;
-            span.textContent = `${tie()} </br> ${showScore(humanScore, computerScore)}`;
+            span.innerHTML = `${tie()} </br> ${showScore(humanScore, computerScore)}`;
         }
     }
     return [humanScore, computerScore];
@@ -139,7 +139,7 @@ btns.forEach( function (btn) {
         computerScore = result[1];
         // game ends when either reaches a score of 5
         if ((humanScore === 5) || (computerScore === 5)) {
-            span.textContent = "Game ends";
+            span.innerHTML = "Game ends";
             // reset the score
             humanScore = 0;
             computerScore = 0;
