@@ -1,0 +1,14 @@
+.body-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    gap: 10px;
+}
+#result {
+    min-width: 100px;
+    min-height: 50px;
+    border: 2px solid black;
+    text-align: center;
+}
