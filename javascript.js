@@ -139,7 +139,10 @@ btns.forEach( function (btn) {
         computerScore = result[1];
         // game ends when either reaches a score of 5
         if ((humanScore === 5) || (computerScore === 5)) {
-            span.innerHTML = "Game ends";
+            if (humanScore === 5) {
+                span.innerHTML = "Game ends. You Win!";
+            } else span.innerHTML = "Game ends. Computer Wins!";
+            
             // reset the score
             humanScore = 0;
             computerScore = 0;
